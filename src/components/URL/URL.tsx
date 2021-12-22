@@ -1,7 +1,14 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState } from 'react'
 import axios from 'axios';
-import { Container } from '@chakra-ui/react'
 import copy from "copy-to-clipboard";
+import {
+    Container,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    Input,
+} from '@chakra-ui/react'
 
 
 
@@ -11,8 +18,16 @@ const URL: FC = () => {
     const [shortenUrl, setShortenUrl] = useState<any | null>(null)
 
 
+    const isError = url === ''
+
+
+    const API: any = process.env.REACT_APP_API
+
+    console.log('API:', API)
+    console.log('API:', API)
+
     const shortUrl = async () => {
-        const { data } = await axios.get(`https://ulvis.net/API/write/get`, {
+        const { data } = await axios.get(API, {
             params: {
                 url: url,
                 custom: customName
@@ -36,6 +51,25 @@ const URL: FC = () => {
     return (
         <>
             <Container>
+
+                <FormControl isInvalid={isError}>
+                    <FormLabel htmlFor='email'>URL</FormLabel>
+                    <Input
+                        id='email'
+                        type='url'
+                        onChange={(e) => setUrl(e.target.value)}
+                    />
+                    {!isError ? (
+                        <FormHelperText>
+                            Enter the url you'd like to short.
+                        </FormHelperText>
+                    ) : (
+                        <FormErrorMessage>url is required.</FormErrorMessage>
+                    )}
+                </FormControl>
+
+
+
                 <input
                     onChange={(e) => setUrl(e.target.value)}
                     type="text"
