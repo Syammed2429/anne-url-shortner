@@ -122,7 +122,6 @@ const URL: FC = () => {
                         <Flex
                             justify="space-around"
                             align="center"
-                            mx={3}
 
                         >
                             <Box color="black">
