@@ -8,8 +8,13 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
+    Button,
 } from '@chakra-ui/react'
+import { AiOutlineLink } from "react-icons/ai"
+import { FaCopy } from "react-icons/fa"
 
+// AiOutlineLink
+// FaCopy
 
 
 const URL: FC = () => {
@@ -19,12 +24,11 @@ const URL: FC = () => {
 
 
     const isError = url === ''
+    const isErrorr = customName === ''
 
 
     const API: any = process.env.REACT_APP_API
 
-    console.log('API:', API)
-    console.log('API:', API)
 
     const shortUrl = async () => {
         const { data } = await axios.get(API, {
@@ -69,20 +73,41 @@ const URL: FC = () => {
                 </FormControl>
 
 
+                <FormControl >
+                    <FormLabel htmlFor='email'>Custom Name</FormLabel>
+                    <Input
+                        id='name'
+                        type='text'
+                        onChange={(e) => setCustomName(e.target.value)}
+                    />
+                    {!isErrorr ? (
+                        <FormHelperText>
+                            Enter the custom name. It's an optional.
+                        </FormHelperText>
+                    ) : (
+                        <FormErrorMessage>It's an optional.</FormErrorMessage>
+                    )}
+                </FormControl>
 
-                <input
-                    onChange={(e) => setUrl(e.target.value)}
-                    type="text"
-                    placeholder="Enter the url" />
-                <input
-                    onChange={(e) => setCustomName(e.target.value)}
-                    type="text"
-                    placeholder="Enter the custom name" />
-                <button
+                <Button
                     onClick={shortUrl}
-                >Short URL</button>
-                <div id="myInput">{shortenUrl}</div>
-                <button onClick={copyToClipboard}>Copy text</button>
+                    leftIcon={<AiOutlineLink />}
+                    colorScheme='pink' variant='solid'>
+                    Short Url
+                </Button>
+
+                <div>
+
+                    <div id="myInput">{shortenUrl}</div>
+                    <Button
+                        onClick={copyToClipboard}
+                        rightIcon={<FaCopy />}
+                        colorScheme='blue' variant='solid'>
+                        Copy URL
+                    </Button>
+                </div>
+
+
                 <div>
                     {value}
                 </div>
