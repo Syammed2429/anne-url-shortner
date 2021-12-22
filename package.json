@@ -1,6 +1,6 @@
 {
   "name": "anne-url-shortner",
-  "proxy": "https://ulvis.net/API/write/get",
+  "proxy": "https://ulvis.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
