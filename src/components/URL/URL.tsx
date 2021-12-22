@@ -9,7 +9,6 @@ import {
     Input,
     Button,
     Flex,
-    Center,
     Box,
 } from '@chakra-ui/react'
 import { AiOutlineLink } from "react-icons/ai"
@@ -26,7 +25,7 @@ const URL: FC = () => {
 
 
 
-    let isError = url === null
+    let isError = url === ""
 
     const isErrorr = customName === ''
 
@@ -60,7 +59,7 @@ const URL: FC = () => {
 
     return (
         <>
-            <Container my={5}>
+            <Container py={50}>
 
                 <FormControl isInvalid={isError}>
                     <FormLabel htmlFor='email'>URL</FormLabel>
@@ -124,9 +123,9 @@ const URL: FC = () => {
                             align="center"
 
                         >
-                            <Box color="black">
+                            <Box color="black" fontSize='20px'>
 
-                                <div id="myInput">{shortenUrl}</div>
+                                <div><a href={shortenUrl} target="_blank" rel="noreferrer">{shortenUrl}</a></div>
                             </Box>
                             <CopyButton shortenUrl={shortenUrl} />
                         </Flex>
