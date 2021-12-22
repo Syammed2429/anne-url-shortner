@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { AiOutlineLink } from "react-icons/ai"
 import { FaCopy } from "react-icons/fa"
+import { CopyButton } from './CopyButton';
 
 // AiOutlineLink
 // FaCopy
@@ -49,7 +50,7 @@ const URL: FC = () => {
 
     const copyToClipboard = () => {
         copy(shortenUrl);
-        alert(`You have copied "${shortenUrl}"`);
+        <div>(`You have copied "${shortenUrl}"`)</div>
     }
 
     return (
@@ -99,14 +100,15 @@ const URL: FC = () => {
                 <div>
 
                     <div id="myInput">{shortenUrl}</div>
-                    <Button
+                    {/* <Button
                         onClick={copyToClipboard}
                         rightIcon={<FaCopy />}
                         colorScheme='blue' variant='solid'>
                         Copy URL
-                    </Button>
+                    </Button> */}
                 </div>
 
+                <CopyButton copyUrl={copyToClipboard} shortenUrl={shortenUrl} />
 
                 <div>
                     {value}
