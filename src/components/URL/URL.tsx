@@ -10,7 +10,6 @@ import {
     Button,
 } from '@chakra-ui/react'
 import { AiOutlineLink } from "react-icons/ai"
-import { FaCopy } from "react-icons/fa"
 import { CopyButton } from './CopyButton';
 
 // AiOutlineLink
@@ -23,7 +22,7 @@ const URL: FC = () => {
     const [shortenUrl, setShortenUrl] = useState<any | null>(null)
 
 
-    const isError = url === ''
+    const isError = url === null
     const isErrorr = customName === ''
 
 
@@ -31,14 +30,20 @@ const URL: FC = () => {
 
 
     const shortUrl = async () => {
-        const { data } = await axios.get(API, {
-            params: {
-                url: url,
-                custom: customName
+        try {
 
-            }
-        })
-        setShortenUrl(data.data.url)
+            const { data } = await axios.get(API, {
+                params: {
+                    url: url,
+                    custom: customName
+
+                }
+            })
+            setShortenUrl(data.data.url)
+        } catch (error) {
+            console.log('error:', error)
+
+        }
     }
 
     if (shortenUrl === undefined) {
