@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import copy from "copy-to-clipboard";
 
 import {
@@ -21,6 +21,10 @@ const CopyButton = ({ shortenUrl }: any) => {
 
     const copyToClipboard = () => {
         copy(shortenUrl);
+    }
+
+    if (!shortenUrl) {
+        return null
     }
 
     return (
