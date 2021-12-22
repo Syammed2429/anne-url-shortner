@@ -11,6 +11,7 @@ import {
     useDisclosure,
     Button,
     AlertDialogCloseButton,
+    Container,
 } from '@chakra-ui/react'
 import { FaCopy } from "react-icons/fa"
 
@@ -32,12 +33,13 @@ const CopyButton = ({ shortenUrl }: any) => {
             <Button
                 rightIcon={<FaCopy />}
                 variant='solid'
+                bg='#285E61'
                 onClick={() => {
                     onOpen()
                     copyToClipboard()
                 }}>Copy URL</Button>
             <AlertDialog
-                motionPreset='slideInRight'
+                motionPreset='scale'
                 leastDestructiveRef={cancelRef}
                 onClose={onClose}
                 isOpen={isOpen}

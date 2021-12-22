@@ -8,6 +8,9 @@ import {
     FormHelperText,
     Input,
     Button,
+    Flex,
+    Center,
+    Box,
 } from '@chakra-ui/react'
 import { AiOutlineLink } from "react-icons/ai"
 import { CopyButton } from './CopyButton';
@@ -22,7 +25,9 @@ const URL: FC = () => {
     const [shortenUrl, setShortenUrl] = useState<any | null>(null)
 
 
-    const isError = url === null
+
+    let isError = url === null
+
     const isErrorr = customName === ''
 
 
@@ -55,7 +60,7 @@ const URL: FC = () => {
 
     return (
         <>
-            <Container>
+            <Container my={5}>
 
                 <FormControl isInvalid={isError}>
                     <FormLabel htmlFor='email'>URL</FormLabel>
@@ -63,6 +68,7 @@ const URL: FC = () => {
                         id='email'
                         type='url'
                         onChange={(e) => setUrl(e.target.value)}
+                        placeholder="Add a url to shorten"
                     />
                     {!isError ? (
                         <FormHelperText>
@@ -74,7 +80,7 @@ const URL: FC = () => {
                 </FormControl>
 
 
-                <FormControl >
+                <FormControl my={5}>
                     <FormLabel htmlFor='email'>Custom Name</FormLabel>
                     <Input
                         id='name'
@@ -90,29 +96,45 @@ const URL: FC = () => {
                     )}
                 </FormControl>
 
-                <Button
-                    onClick={shortUrl}
-                    leftIcon={<AiOutlineLink />}
-                    colorScheme='pink' variant='solid'>
-                    Short Url
-                </Button>
+                {isError ? null :
+                    <div>
+                        <Button
+                            my={3}
+                            onClick={shortUrl}
+                            leftIcon={<AiOutlineLink />}
+                            colorScheme='pink' variant='solid'>
+                            Short URL
+                        </Button>
+
+                    </div>}
 
                 <div>
 
-                    <div id="myInput">{shortenUrl}</div>
-                    {/* <Button
-                        onClick={copyToClipboard}
-                        rightIcon={<FaCopy />}
-                        colorScheme='blue' variant='solid'>
-                        Copy URL
-                    </Button> */}
+
+
                 </div>
-
-                <CopyButton shortenUrl={shortenUrl} />
-
                 <div>
                     {value}
                 </div>
+                {shortenUrl ?
+                    <Box bg='#48BB78' w='100%' p={4} color='white' my={4}>
+
+                        <Flex
+                            justify="space-around"
+                            align="center"
+                            mx={3}
+
+                        >
+                            <Box color="black">
+
+                                <div id="myInput">{shortenUrl}</div>
+                            </Box>
+                            <CopyButton shortenUrl={shortenUrl} />
+                        </Flex>
+                    </Box>
+                    : null
+                }
+
             </Container>
         </>
     )
