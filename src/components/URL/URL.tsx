@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
 import axios from 'axios';
-import copy from "copy-to-clipboard";
 import {
     Container,
     FormControl,
@@ -48,10 +47,6 @@ const URL: FC = () => {
 
 
 
-    const copyToClipboard = () => {
-        copy(shortenUrl);
-        <div>(`You have copied "${shortenUrl}"`)</div>
-    }
 
     return (
         <>
@@ -108,7 +103,7 @@ const URL: FC = () => {
                     </Button> */}
                 </div>
 
-                <CopyButton copyUrl={copyToClipboard} shortenUrl={shortenUrl} />
+                <CopyButton shortenUrl={shortenUrl} />
 
                 <div>
                     {value}

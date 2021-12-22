@@ -15,14 +15,12 @@ import {
 import { FaCopy } from "react-icons/fa"
 
 
-const CopyButton = ({ copyUrl, shortenUrl }: any) => {
-    console.log('shortenUrl:', shortenUrl)
+const CopyButton = ({ shortenUrl }: any) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef<any>()
 
     const copyToClipboard = () => {
         copy(shortenUrl);
-        <div>(`You have copied "${shortenUrl}"`)</div>
     }
 
     return (
@@ -44,18 +42,15 @@ const CopyButton = ({ copyUrl, shortenUrl }: any) => {
                 <AlertDialogOverlay />
 
                 <AlertDialogContent>
-                    <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
+                    <AlertDialogHeader>Shorten URl Copied 😍 </AlertDialogHeader>
                     <AlertDialogCloseButton />
                     <AlertDialogBody>
-                        Are you sure you want to discard all of your notes? 44 words will be
-                        deleted.
+                        The new shorten url is <a href={shortenUrl} title="go to the site">{shortenUrl}</a>
                     </AlertDialogBody>
                     <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onClose}>
-                            No
-                        </Button>
-                        <Button colorScheme='red' ml={3}>
-                            Yes
+
+                        <Button onClick={onClose} colorScheme='teal' ml={3}>
+                            Enjoy
                         </Button>
                     </AlertDialogFooter>
                 </AlertDialogContent>
