@@ -19,7 +19,7 @@ import { CopyButton } from './CopyButton';
 
 
 const URL: FC = () => {
-    const [url, setUrl] = useState<string | null>(null)
+    const [url, setUrl] = useState<string | "">("")
     const [customName, setCustomName] = useState<string | null>(null)
     const [shortenUrl, setShortenUrl] = useState<any | null>(null)
 
