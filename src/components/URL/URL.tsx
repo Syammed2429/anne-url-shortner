@@ -21,8 +21,6 @@ const URL: FC = () => {
     const [customName, setCustomName] = useState<string | null>(null)
     const [shortenUrl, setShortenUrl] = useState<any | null>(null)
 
-
-
     let isError = url === ""
 
     const isErrorr = customName === ''
@@ -31,6 +29,7 @@ const URL: FC = () => {
 
 
     const shortUrl = async () => {
+        //Shorten the url
         const { data } = await axios.get(`${API}`, {
             params: {
                 url: url,
