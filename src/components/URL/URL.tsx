@@ -14,8 +14,6 @@ import {
 import { AiOutlineLink } from "react-icons/ai"
 import { CopyButton } from './CopyButton';
 
-// AiOutlineLink
-// FaCopy
 
 
 const URL: FC = () => {
@@ -29,26 +27,22 @@ const URL: FC = () => {
 
     const isErrorr = customName === ''
 
-
-    const API: any = process.env.REACT_APP_API
+    const API: string | undefined = process.env.REACT_APP_API
 
 
     const shortUrl = async () => {
-        try {
+        const { data } = await axios.get(`${API}`, {
+            params: {
+                url: url,
+                custom: customName
+            }
+        })
+        setShortenUrl(data)
 
-            const { data } = await axios.get(API, {
-                params: {
-                    url: url,
-                    custom: customName
 
-                }
-            })
-            setShortenUrl(data.data.url)
-        } catch (error) {
-            console.log('error:', error)
 
-        }
     }
+
 
     if (shortenUrl === undefined) {
         var value: any = "Custom name is already used please use different Custom Name"
