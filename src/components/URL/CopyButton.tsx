@@ -11,7 +11,6 @@ import {
     useDisclosure,
     Button,
     AlertDialogCloseButton,
-    Container,
 } from '@chakra-ui/react'
 import { FaCopy } from "react-icons/fa"
 
