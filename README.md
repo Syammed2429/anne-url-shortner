@@ -1,3 +1,6 @@
+
+
+
 # Anne Url Shortner
 
 A website to shorten your long urls / links.
@@ -5,6 +8,10 @@ A website to shorten your long urls / links.
 <h2 align="center">
   <a href="https://anne-url-shortner.vercel.app/" target="_blank">Anne Url Shortner</a>
 </h2>
+
+## Preview
+https://user-images.githubusercontent.com/43319549/149700083-d695b91c-61e4-4048-9b22-100b897ce52b.mp4
+
 
 ## Built With
 
