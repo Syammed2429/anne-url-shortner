@@ -23,7 +23,6 @@ This project was built using these technologies.
 - Deployed on Vercel
 - Nodejs
 - ExpressJs
-- Deployed on Vercel
 
 ## Features are:
 
